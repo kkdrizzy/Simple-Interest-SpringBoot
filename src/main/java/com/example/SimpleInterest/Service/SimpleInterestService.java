@@ -48,8 +48,7 @@ public class SimpleInterestService {
         if (!simpleInterestRepository.findById(id).isPresent()) {
             throw new InterestVariableNotFound();
         } else {
-            InterestVariable interestVariable = simpleInterestRepository.findById(id).get();
-            return interestVariable;
+            return simpleInterestRepository.findById(id).get();
         }
     }
 
@@ -66,10 +65,9 @@ public class SimpleInterestService {
 
     public void deleteInterestVariableById(Long id) throws InterestVariableNotFound {
         InterestVariable interestVariable = new InterestVariable();
-        if (!simpleInterestRepository.findById(id).isPresent()){
+        if (!simpleInterestRepository.findById(id).isPresent()) {
             throw new InterestVariableNotFound();
-        }
-        else {
+        } else {
             simpleInterestRepository.deleteById(id);
         }
     }
