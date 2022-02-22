@@ -63,4 +63,14 @@ public class SimpleInterestService {
         }
         return interestVariables;
     }
+
+    public void deleteInterestVariableById(Long id) throws InterestVariableNotFound {
+        InterestVariable interestVariable = new InterestVariable();
+        if (!simpleInterestRepository.findById(id).isPresent()){
+            throw new InterestVariableNotFound();
+        }
+        else {
+            simpleInterestRepository.deleteById(id);
+        }
+    }
 }

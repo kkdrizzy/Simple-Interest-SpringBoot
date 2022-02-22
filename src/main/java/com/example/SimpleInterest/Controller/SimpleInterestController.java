@@ -31,4 +31,9 @@ public class SimpleInterestController {
     public List<InterestVariable> getAllInterestVariableClass() throws InterestVariableNotFound {
         return simpleInterestService.getAllInterestVariableClass();
     }
+
+    @DeleteMapping("/simple-interest/{id}")
+    public void deleteInterestVariableById(@PathVariable("id") Long id) throws InterestVariableNotFound {
+        simpleInterestService.deleteInterestVariableById(id);
+    }
 }
