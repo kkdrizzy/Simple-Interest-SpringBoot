@@ -23,22 +23,22 @@ public class GlobalExceptionHandler {
 
 
     @ExceptionHandler(InterestVariableSetZero.class)
-    public ResponseEntity interestVariableSetZero(InterestVariableSetZero interestVariableSetZero){
+    public ResponseEntity interestVariableSetZero(InterestVariableSetZero interestVariableSetZero) {
         return new ResponseEntity(message1, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(InterestVariableNotFound.class)
-    public ResponseEntity interestVariableNotFound(InterestVariableNotFound interestVariableNotFound){
+    public ResponseEntity interestVariableNotFound(InterestVariableNotFound interestVariableNotFound) {
         return new ResponseEntity(message2, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(MissingInterestVariable.class)
-    public ResponseEntity missingInterestVariable(MissingInterestVariable missingInterestVariable){
+    public ResponseEntity missingInterestVariable(MissingInterestVariable missingInterestVariable) {
         return new ResponseEntity(message3, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity noInternetConnection(Exception ex){
+    public ResponseEntity noInternetConnection(Exception ex) {
         return new ResponseEntity(message4, HttpStatus.GATEWAY_TIMEOUT);
     }
 

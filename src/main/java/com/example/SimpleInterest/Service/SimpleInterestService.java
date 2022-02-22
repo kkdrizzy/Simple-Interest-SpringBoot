@@ -8,6 +8,8 @@ import com.example.SimpleInterest.Repository.SimpleInterestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SimpleInterestService {
 
@@ -21,19 +23,17 @@ public class SimpleInterestService {
         Long rateOfInterest = interestVariable.getRateOfInterest();
         Long duration = interestVariable.getDuration();
 
-        if (principal == null || rateOfInterest == null || duration == null){
+        if (principal == null || rateOfInterest == null || duration == null) {
             throw new MissingInterestVariable();
-        }
-        else if (principal == 0 || rateOfInterest == 0 || duration == 0) {
+        } else if (principal == 0 || rateOfInterest == 0 || duration == 0) {
             throw new InterestVariableSetZero();
-        }
-        else {
+        } else {
             interestVariable1.setPrincipal(principal);
             interestVariable1.setRateOfInterest(rateOfInterest);
             interestVariable1.setDuration(duration);
         }
 
-        Long simpleInterest = (principal*rateOfInterest*duration/100);
+        Long simpleInterest = (principal * rateOfInterest * duration / 100);
         interestVariable1.setSimpleInterest(simpleInterest);
 
         Long totalAmount = simpleInterest + principal;
@@ -45,12 +45,22 @@ public class SimpleInterestService {
     }
 
     public InterestVariable getInterestVariableClass(Long id) throws InterestVariableNotFound {
-        if(!simpleInterestRepository.findById(id).isPresent()){
+        if (!simpleInterestRepository.findById(id).isPresent()) {
             throw new InterestVariableNotFound();
-        }
-        else {
+        } else {
             InterestVariable interestVariable = simpleInterestRepository.findById(id).get();
             return interestVariable;
         }
+    }
+
+    public List<InterestVariable> getAllInterestVariableClass() throws InterestVariableNotFound {
+        List<InterestVariable> interestVariables;
+
+        if (simpleInterestRepository.findAll().isEmpty()) {
+            throw new InterestVariableNotFound();
+        } else {
+            interestVariables = simpleInterestRepository.findAll();
+        }
+        return interestVariables;
     }
 }

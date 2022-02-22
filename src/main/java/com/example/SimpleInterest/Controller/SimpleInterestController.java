@@ -8,6 +8,8 @@ import com.example.SimpleInterest.Service.SimpleInterestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/")
 public class SimpleInterestController {
@@ -21,7 +23,12 @@ public class SimpleInterestController {
     }
 
     @GetMapping("/simple-interest/{id}")
-    public InterestVariable saveInterestVariable(@PathVariable("id") Long id) throws InterestVariableNotFound {
+    public InterestVariable getInterestVariableClass(@PathVariable("id") Long id) throws InterestVariableNotFound {
         return simpleInterestService.getInterestVariableClass(id);
+    }
+
+    @GetMapping("/simple-interests")
+    public List<InterestVariable> getAllInterestVariableClass() throws InterestVariableNotFound {
+        return simpleInterestService.getAllInterestVariableClass();
     }
 }

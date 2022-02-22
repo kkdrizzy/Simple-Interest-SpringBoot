@@ -1,6 +1,6 @@
 package com.example.SimpleInterest.Exception;
 
-public class InterestVariableNotFound extends Exception{
+public class InterestVariableNotFound extends Exception {
 
     private String message;
 

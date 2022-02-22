@@ -1,6 +1,6 @@
 package com.example.SimpleInterest.Exception;
 
-public class InterestVariableSetZero extends Exception{
+public class InterestVariableSetZero extends Exception {
 
     private String message;
 
